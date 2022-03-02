@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chess Vision</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font: 14px "Century Gothic", Futura, sans-serif;
+            margin: 20px;
+        }
+        ol, ul {
+            padding-left: 30px;
+        }
+        .board-row:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+        .status {
+            margin-bottom: 10px;
+        }
+        .square {
+            background: #fff;
+            border: 1px solid #999;
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 34px;
+            height: 34px;
+            margin-right: -1px;
+            margin-top: -1px;
+            padding: 0;
+            text-align: center;
+            width: 34px;
+        }
+        .square:focus {
+            outline: none;
+        }
+        .kbd-navigation .square:focus {
+            background: #ddd;
+        }
+        .game {
+            display: flex;
+            flex-direction: row;
+        }
+        .game-info {
+            margin-left: 20px;
+        }      
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Square extends React.Component {
+            render() {
+                return (
+                <button className="square">
+                    {/* TODO */}
+                </button>
+                );
+            }
+        }
+        class Board extends React.Component {
+            renderSquare(i) {
+                return <Square />;
+            }
+            render() {
+                const status = 'Next player: X';
+
+                return (
+                <div>
+                    <div className="status">{status}</div>
+                    <div className="board-row">
+                        {this.renderSquare('a8')}
+                        {this.renderSquare('b8')}
+                        {this.renderSquare('c8')}
+                        {this.renderSquare('d8')}
+                        {this.renderSquare('e8')}
+                        {this.renderSquare('f8')}
+                        {this.renderSquare('g8')}
+                        {this.renderSquare('h8')}
+                    </div>
+                    <div className="board-row">
+                        {this.renderSquare('a7')}
+                        {this.renderSquare('b7')}
+                        {this.renderSquare('c7')}
+                        {this.renderSquare('d7')}
+                        {this.renderSquare('e7')}
+                        {this.renderSquare('f7')}
+                        {this.renderSquare('g7')}
+                        {this.renderSquare('h7')}
+                    </div>
+                    <div className="board-row">
+                        {this.renderSquare('a6')}
+                        {this.renderSquare('b6')}
+                        {this.renderSquare('c6')}
+                        {this.renderSquare('d6')}
+                        {this.renderSquare('e6')}
+                        {this.renderSquare('f6')}
+                        {this.renderSquare('g6')}
+                        {this.renderSquare('h6')}
+                    </div>
+                </div>
+                );
+            }
+        }
+        class Game extends React.Component {
+            render() {
+                return (
+                <div className="game">
+                    <div className="game-board">
+                    <Board />
+                    </div>
+                    <div className="game-info">
+                    <div>{/* status */}</div>
+                    <ol>{/* TODO */}</ol>
+                    </div>
+                </div>
+                );
+            }
+        }
+
+        // ========================================
+
+        ReactDOM.render(
+            <Game />,
+            document.getElementById('root')
+        );
+
+    </script>
+    -->
+  </body>
+</html>
