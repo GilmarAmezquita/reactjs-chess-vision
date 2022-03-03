@@ -12,6 +12,8 @@
   <body>
     <div id="root" class="principal-page"></div>
     <script type="text/babel">
+        let started = false;
+
         class Square extends React.Component {
             constructor(props){
                 super(props);
@@ -122,9 +124,24 @@
                 this.state = {minutes: 1, seconds: 0 };
             }
             tick() {
-                this.setState(state => ({
-                seconds: state.seconds + 1
-                }));
+                if(started){
+                    if(this.state.minutes == 1){
+                        this.setState(state => ({
+                            minutes: 0,
+                            seconds: 59
+                        }));
+                    }else if(this.state.seconds>0){
+                        this.setState(state => ({
+                        seconds: state.seconds -1
+                        }));
+                    }else{
+                        this.setState(state => ({
+                            seconds:0,
+                            minutes:1
+                        }));
+                        started = false;
+                    }
+                }
             }
             componentDidMount() {
                 this.interval = setInterval(() => this.tick(), 1000);
@@ -143,15 +160,15 @@
         class Vision extends React.Component{
             render(){
                 return(
-                    <div class="general-container">
-                        <div class="vision-panel black">
+                    <div className="general-container">
+                        <div className="vision-panel black">
                             Vision
                         </div>
-                        <div class="white">
+                        <div className="white">
                             <Timer/>
                         </div>
                         <div>
-                            <button className="border" id="start-game">Start</button>
+                            <button id="start-game">Start</button>
                         </div>
                     </div>
                 );
@@ -161,7 +178,7 @@
             render() {
                 return (
                 <div className="game" align="center">
-                    <div className="game-board" align="center">
+                    <div className="game-board">
                     <Board />
                     </div>
                     <Vision/>
@@ -174,6 +191,13 @@
             document.getElementById('root')
         );
 
+        const events = async () => {
+            document.getElementById('start-game').addEventListener('click', () =>{
+                started=true;
+            });
+        }
+        window.addEventListener('hashchange', events);
+        window.addEventListener('load', events);
     </script>
   </body>
 </html>

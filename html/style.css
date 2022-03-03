@@ -1,6 +1,5 @@
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
 }
 ol, ul {
     padding-left: 30px;
@@ -8,24 +7,20 @@ ol, ul {
 .principal-page {
     align-items: center;
     background-color: #312E2B;
+    width: 1080px;
+    height: 660px;
 }
 .board-row:after {
     clear: both;
     content: "";
     display: table;
 }
-.status {
-    margin-bottom: 10px;
-}
-.border {
-    margin: 10px;
-}
 .game {
     display: flex;
     flex-direction: row;
 }
-.game-info {
-    margin-left: 20px;
+.game-board {
+    margin: 10px;
 }
 /*Colores*/
 .white {
@@ -59,7 +54,6 @@ ol, ul {
     width: auto;
     background-color: #1F1E1B;
     margin: 10px;
-    margin-top: 0px;
     border-radius: 5px;
 }
 .vision-panel {
