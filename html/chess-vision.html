@@ -13,7 +13,7 @@
     <div id="root" class="principal-page"></div>
     <script type="text/babel">
         let started = false;
-
+        let actualBox = "";
         class Square extends React.Component {
             constructor(props){
                 super(props);
@@ -140,6 +140,7 @@
                             minutes:1
                         }));
                         started = false;
+                        document.getElementById('button-container').style.display = "initial";
                     }
                 }
             }
@@ -151,7 +152,7 @@
             }
             render() {
                 return (
-                <div>
+                <div className="timer">
                     {this.state.minutes} : {this.state.seconds}
                 </div>
                 );
@@ -164,11 +165,17 @@
                         <div className="vision-panel black">
                             Vision
                         </div>
-                        <div className="white">
+                        <div className="timer-container">
+                            <div className="img-container">
+                                <img className="img" src="https://betacssjs.chesscomfiles.com/bundles/web/images/user-image.007dad08.svg"/>
+                            </div>
+                            <div className="points">
+                                Puntuación:    
+                            </div>
                             <Timer/>
                         </div>
-                        <div>
-                            <button id="start-game">Start</button>
+                        <div className="button-container" id="button-container">
+                            <button className="button" id="start-game">Start</button>
                         </div>
                     </div>
                 );
@@ -194,6 +201,7 @@
         const events = async () => {
             document.getElementById('start-game').addEventListener('click', () =>{
                 started=true;
+                document.getElementById('button-container').style.display = "none";
             });
         }
         window.addEventListener('hashchange', events);
