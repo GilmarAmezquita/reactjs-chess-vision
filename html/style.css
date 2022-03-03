@@ -5,6 +5,10 @@ body {
 ol, ul {
     padding-left: 30px;
 }
+.principal-page {
+    align-items: center;
+    background-color: #312E2B;
+}
 .board-row:after {
     clear: both;
     content: "";
@@ -13,25 +17,8 @@ ol, ul {
 .status {
     margin-bottom: 10px;
 }
-.square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 34px;
-}
-.square:focus {
-    outline: none;
-}
-.kbd-navigation .square:focus {
-    background: #ddd;
+.border {
+    margin: 10px;
 }
 .game {
     display: flex;
@@ -39,16 +26,52 @@ ol, ul {
 }
 .game-info {
     margin-left: 20px;
-}      
-
-.box {
+}
+/*Colores*/
+.white {
+    color: white;
+}
+/*Diseño de los cuadros del tablero*/
+.square {
     width: 80px;
     height: 80px;
-    display: inline-block;
-    margin: -2px;
-    background-color: #F1F1DB;
+    background: #F1F1DB;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    padding: 0;
+    text-align: center;
 }
-
 .black {
     background-color: #91AB78;
+}
+.square:focus {
+    outline: none;
+}
+.kbd-navigation .square:focus {
+    background: #ddd;
+}
+/*Diseño del sector de vision*/
+.general-container {
+    height: 640;
+    width: auto;
+    background-color: #1F1E1B;
+    margin: 10px;
+    margin-top: 0px;
+    border-radius: 5px;
+}
+.vision-panel {
+    height: 70px;
+    width: 400px;
+    color:white;
+    font-size: 20px;
+    font-weight: 750;
+    background-color: #85AA53;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" class="principal-page"></div>
     <script type="text/babel">
         class Square extends React.Component {
             constructor(props){
@@ -19,11 +19,9 @@
                 this.color = props.color;
             }
             render() {
-                var st = "square box "+this.color;
+                var st = "square "+this.color;
                 return (
-                <button className={st}>
-                    {/* TODO */}
-                </button>
+                <button className={st} id={this.value}></button>
                 );
             }
         }
@@ -32,11 +30,8 @@
                 return <Square value={i} color={color}/>;
             }
             render() {
-                const status = 'Next player: X';
-
                 return (
                 <div>
-                    <div className="status">{status}</div>
                     <div className="board-row">
                         {this.renderSquare('a8')}
                         {this.renderSquare('b8', 'black')}
@@ -121,24 +116,59 @@
                 );
             }
         }
-        class Game extends React.Component {
+        class Timer extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {minutes: 1, seconds: 0 };
+            }
+            tick() {
+                this.setState(state => ({
+                seconds: state.seconds + 1
+                }));
+            }
+            componentDidMount() {
+                this.interval = setInterval(() => this.tick(), 1000);
+            }
+            componentWillUnmount() {
+                clearInterval(this.interval);
+            }
             render() {
                 return (
-                <div className="game">
-                    <div className="game-board">
-                    <Board />
-                    </div>
-                    <div className="game-info">
-                    <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
-                    </div>
+                <div>
+                    {this.state.minutes} : {this.state.seconds}
                 </div>
                 );
             }
         }
-
-        // ========================================
-
+        class Vision extends React.Component{
+            render(){
+                return(
+                    <div class="general-container">
+                        <div class="vision-panel black">
+                            Vision
+                        </div>
+                        <div class="white">
+                            <Timer/>
+                        </div>
+                        <div>
+                            <button className="border" id="start-game">Start</button>
+                        </div>
+                    </div>
+                );
+            }
+        }
+        class Game extends React.Component {
+            render() {
+                return (
+                <div className="game" align="center">
+                    <div className="game-board" align="center">
+                    <Board />
+                    </div>
+                    <Vision/>
+                </div>
+                );
+            }
+        }
         ReactDOM.render(
             <Game />,
             document.getElementById('root')
