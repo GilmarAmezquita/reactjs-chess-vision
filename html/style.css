@@ -44,11 +44,11 @@ ol, ul {
 .box {
     width: 80px;
     height: 80px;
-    border: 1px solid black;
     display: inline-block;
     margin: -2px;
+    background-color: #F1F1DB;
 }
 
 .black {
-    background-color: black;
+    background-color: #91AB78;
 }
