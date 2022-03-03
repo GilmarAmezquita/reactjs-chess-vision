@@ -10,20 +10,26 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <!--<div id="root"></div>
+    <div id="root"></div>
     <script type="text/babel">
         class Square extends React.Component {
+            constructor(props){
+                super(props);
+                this.value = props.value;
+                this.color = props.color;
+            }
             render() {
+                var st = "square "+this.color;
                 return (
-                <button className="square">
+                <button className={st}>
                     {/* TODO */}
                 </button>
                 );
             }
         }
         class Board extends React.Component {
-            renderSquare(i) {
-                return <Square />;
+            renderSquare(i, color) {
+                return <Square value={i} color={color}/>;
             }
             render() {
                 const status = 'Next player: X';
@@ -33,7 +39,7 @@
                     <div className="status">{status}</div>
                     <div className="board-row">
                         {this.renderSquare('a8')}
-                        {this.renderSquare('b8')}
+                        {this.renderSquare('b8', 'black')}
                         {this.renderSquare('c8')}
                         {this.renderSquare('d8')}
                         {this.renderSquare('e8')}
@@ -89,102 +95,103 @@
         );
 
     </script>
+    <!--
+    <div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+    </div>
+    <div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+    </div>
+    <div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+    </div>
+    <div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+    </div>
+    <div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+    </div>
+    <div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+    </div>
+    <div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+    </div>
+    <div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+    </div>
     -->
-    <div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-    </div>
-    <div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-    </div>
-    <div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-    </div>
-    <div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-    </div>
-    <div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-    </div>
-    <div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-    </div>
-    <div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-    </div>
-    <div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-        <div class="box black"></div>
-        <div class="box"></div>
-    </div>
   </body>
 </html>
