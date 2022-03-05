@@ -23,8 +23,17 @@ ol, ul {
     margin: 10px;
 }
 /*Colores*/
-.white {
+.white-txt{
     color: white;
+}
+.black-txt {
+    color: black;
+}
+.white-bg {
+    background-color: white;
+}
+.green-bg {
+    background-color:#85AA53;
 }
 /*Diseño de los cuadros del tablero*/
 .square {
@@ -42,6 +51,7 @@ ol, ul {
 .black {
     background-color: #91AB78;
 }
+
 .square:focus {
     outline: none;
 }
@@ -59,10 +69,8 @@ ol, ul {
 .vision-panel {
     height: 70px;
     width: 400px;
-    color:white;
     font-size: 20px;
     font-weight: 750;
-    background-color: #85AA53;
     align-items: center;
     justify-content: center;
     display: flex;

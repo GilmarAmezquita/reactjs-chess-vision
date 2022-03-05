@@ -13,7 +13,9 @@
     <div id="root" class="principal-page"></div>
     <script type="text/babel">
         let started = false;
-        let actualBox = "";
+        let points = 0;
+        let actualSquare = '';
+
         class Square extends React.Component {
             constructor(props){
                 super(props);
@@ -141,6 +143,8 @@
                         }));
                         started = false;
                         document.getElementById('button-container').style.display = "initial";
+                        document.getElementById('vision-square').innerHTML = 'Vision';
+                    document.getElementById('vision-square').className = 'vision-panel green-bg white-txt';
                     }
                 }
             }
@@ -162,15 +166,15 @@
             render(){
                 return(
                     <div className="general-container">
-                        <div className="vision-panel black">
+                        <div className="vision-panel green-bg white-txt" id="vision-square">
                             Vision
                         </div>
                         <div className="timer-container">
                             <div className="img-container">
                                 <img className="img" src="https://betacssjs.chesscomfiles.com/bundles/web/images/user-image.007dad08.svg"/>
                             </div>
-                            <div className="points">
-                                Puntuación:    
+                            <div className="points" id="points-view">
+                                Puntuación: 0
                             </div>
                             <Timer/>
                         </div>
@@ -201,8 +205,30 @@
         const events = async () => {
             document.getElementById('start-game').addEventListener('click', () =>{
                 started=true;
+                points = 0;
+                actualSquare = getRandomSquare();
+                document.getElementById('points-view').innerHTML = 'Puntuación: '+points;
                 document.getElementById('button-container').style.display = "none";
+                document.getElementById('vision-square').className = 'vision-panel white-bg black-txt';
+                document.getElementById('vision-square').innerHTML = actualSquare;
             });
+            document.getElementById('a1').addEventListener('click', () =>{
+                if(started){
+                    points++;
+                    document.getElementById('points-view').innerHTML = 'Puntuación: '+points;
+                }
+            });
+        }
+        function getRandomSquare() {
+            const list = ['a8', 'a7', 'a6', 'a5', 'a4', 'a3', 'a2', 'a1',
+                'b8', 'b7', 'b6', 'b5', 'b4', 'b3', 'b2', 'b1',
+                'c8', 'c7', 'c6', 'c5', 'c4', 'c3', 'c2', 'c1',
+                'd8', 'd7', 'd6', 'd5', 'd4', 'd3', 'd2', 'd1',
+                'e8', 'e7', 'e6', 'e5', 'e4', 'e3', 'e2', 'e1',
+                'f8', 'f7', 'f6', 'f5', 'f4', 'f3', 'f2', 'f1',
+                'g8', 'g7', 'g6', 'g5', 'g4', 'g3', 'g2', 'g1',
+                'h8', 'h7', 'h6', 'h5', 'h4', 'h3', 'h2', 'h1'];
+            return list[Math.floor(Math.random() * (63 - 0) + 0)];
         }
         window.addEventListener('hashchange', events);
         window.addEventListener('load', events);
