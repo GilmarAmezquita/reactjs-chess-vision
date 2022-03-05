@@ -21,17 +21,31 @@
                 super(props);
                 this.value = props.value;
                 this.color = props.color;
+                this.onClick = props.onClick;
             }
             render() {
                 var st = "square"+this.color;
                 return (
-                <button className={st} id={this.value}></button>
+                <button className={st} id={this.value} onClick={this.onClick}></button>
                 );
             }
         }
         class Board extends React.Component {
             renderSquare(i, color) {
-                return <Square value={i} color={color}/>;
+                return <Square value={i} color={color} onClick={() =>this.squareClick(i)}/>;
+            }
+            squareClick(value){
+                if(started){
+                    if(value === actualSquare){
+                        points++;
+                        actualSquare = getRandomSquare();
+                        document.getElementById('points-view').innerHTML = 'Puntuación: '+points;
+                        document.getElementById('vision-square').innerHTML = actualSquare;
+                    }else{
+                        actualSquare = getRandomSquare();
+                        document.getElementById('vision-square').innerHTML = actualSquare;
+                    }
+                }
             }
             render() {
                 return (
@@ -211,12 +225,6 @@
                 document.getElementById('button-container').style.display = "none";
                 document.getElementById('vision-square').className = 'vision-panel white-bg black-txt';
                 document.getElementById('vision-square').innerHTML = actualSquare;
-            });
-            document.getElementById('a1').addEventListener('click', () =>{
-                if(started){
-                    points++;
-                    document.getElementById('points-view').innerHTML = 'Puntuación: '+points;
-                }
             });
         }
         function getRandomSquare() {
