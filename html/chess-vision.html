@@ -15,6 +15,7 @@
         let started = false;
         let points = 0;
         let actualSquare = '';
+        let time = 0;
 
         class Square extends React.Component {
             constructor(props){
@@ -36,14 +37,18 @@
             }
             squareClick(value){
                 if(started){
+                    let correct = false; 
                     if(value === actualSquare){
                         points++;
+                        correct = true;
                         actualSquare = getRandomSquare();
                         document.getElementById('points-view').innerHTML = 'Puntuación: '+points;
                         document.getElementById('vision-square').innerHTML = actualSquare;
+                        document.getElementById('list-squares').innerHTML += '<div>'+value+': ✓ 0:'+time+'</div>';
                     }else{
                         actualSquare = getRandomSquare();
                         document.getElementById('vision-square').innerHTML = actualSquare;
+                        document.getElementById('list-squares').innerHTML += '<div>'+actualSquare +': X 0:'+time+'</div>';
                     }
                 }
             }
@@ -150,6 +155,7 @@
                         this.setState(state => ({
                         seconds: state.seconds -1
                         }));
+                        time++;
                     }else{
                         this.setState(state => ({
                             seconds:0,
@@ -192,6 +198,7 @@
                             </div>
                             <Timer/>
                         </div>
+                        <div id="list-squares" className="white-txt"></div>
                         <div className="button-container" id="button-container">
                             <button className="button" id="start-game">Start</button>
                         </div>
@@ -225,6 +232,8 @@
                 document.getElementById('button-container').style.display = "none";
                 document.getElementById('vision-square').className = 'vision-panel white-bg black-txt';
                 document.getElementById('vision-square').innerHTML = actualSquare;
+                document.getElementById('list-squares').innerHTML ='';
+                time = 0;
             });
         }
         function getRandomSquare() {
