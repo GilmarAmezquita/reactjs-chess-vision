@@ -46,9 +46,9 @@
                         document.getElementById('vision-square').innerHTML = actualSquare;
                         document.getElementById('list-squares').innerHTML += '<div>'+value+': ✓ 0:'+time+'</div>';
                     }else{
+                        document.getElementById('list-squares').innerHTML += '<div>'+actualSquare +': X 0:'+time+'</div>';
                         actualSquare = getRandomSquare();
                         document.getElementById('vision-square').innerHTML = actualSquare;
-                        document.getElementById('list-squares').innerHTML += '<div>'+actualSquare +': X 0:'+time+'</div>';
                     }
                 }
             }
